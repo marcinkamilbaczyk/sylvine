@@ -1,3 +1,6 @@
+source/.vs/*
+source/out/*
+
 # Prerequisites
 *.d
 
