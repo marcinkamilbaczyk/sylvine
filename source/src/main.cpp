@@ -3,32 +3,43 @@
 #include <memory>
 #include "empty.hpp"
 
-// Moduł config
+// Moduł config - Ogonowski, Obara
 class Config {};
 class Parser {
     public:
         Config parseConfig(std::string configPath);
 };
 
-// Output
-class Output {
-
-};
-
-// Moduł gry
+// Output - Zajko, Dębek, Prędota
 class Game {
     public:
         Game(Config config);
         Output play();
 };
 
-// Moduł strategii
+class Output {
+
+};
+
+// Moduł strategii - Gustaw, Owczarczuk, Mastej
 class Strategy {
     public:
         virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
 };
 
-// Moduł gracza
+class AlwaysPositives: public Strategy {
+    
+};
+
+class AlwaysNegatives: public Strategy {
+
+};
+
+class RandomDecision: public Strategy {
+
+};
+
+// Moduł gracza - Sitek, Wasmocki
 class PlayerFactory {
     Player makePlayer(...) { // TODO: do definiowania jakie parametry
 
@@ -46,7 +57,12 @@ class Player {
 };
 
 
-// Ewaluator
+// Ewaluator - Macek, Fidura, Kiciński, 
+class Evaluator {
+    std::vector<int> evaluateScoring(std::vector<std::vector<int>> allPlayersDecisions) {
+
+    }
+};
 
 
 
