@@ -2,96 +2,56 @@
 #include <vector>
 #include <memory>
 #include <iostream>
-#include "empty.hpp"
+#include "../include/config.hpp"
 
-// Moduł config - Ogonowski, Obara
-class Config {};
-
-class Parser {
-public:
-    Config parseConfig(std::string configPath) {
-        // TODO: implementacja
-        return Config();
-    }
-};
-
-
-// Output - Zajko, Dębek, Prędota
 class Game {
 public:
-    Game(Config config) {
-        // TODO: implementacja
-    }
-    
-    void play() {
-        // TODO: implementacja
-    }
+    Game(const Config& config) {}
+    void play() {}
 };
 
-class Output {
+class Output {};
 
-};
-
-// Moduł strategii - Gustaw, Owczarczuk, Mastej
 class Strategy {
-    public:
-        virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
+public:
+    virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
+    virtual ~Strategy() = default;
 };
 
 class AlwaysPositives: public Strategy {
-    
+public:
+    int makeDecision(std::vector<int> gameHistoryWithPlayer) override { return 0; }
 };
 
 class AlwaysNegatives: public Strategy {
-
+public:
+    int makeDecision(std::vector<int> gameHistoryWithPlayer) override { return 0; }
 };
 
 class RandomDecision: public Strategy {
-
+public:
+    int makeDecision(std::vector<int> gameHistoryWithPlayer) override { return 0; }
 };
 
-// Moduł gracza - Sitek, Wasmocki
-class PlayerFactory {
-    // Player makePlayer(...) { // TODO: do definiowania jakie parametry
-
-    // }
-};
+class PlayerFactory {};
 
 class Player {
-    public:
-        Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy) {}
-        int getId() { return id; }
-    
-    private:
-        int id;
-        std::shared_ptr<Strategy> strategy;
+public:
+    Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy) {}
+    int getId() { return id; }
+private:
+    int id;
+    std::shared_ptr<Strategy> strategy;
 };
 
+class Evaluator {};
 
-// Ewaluator - Macek, Fidura, Kiciński, 
-class Evaluator {
-    // std::vector<int> evaluateScoring(std::vector<std::vector<int>> allPlayersDecisions) {
-
-    // }
-};
-
-
-
-int main() { // TODO: dodac argsy
-    std::cout << "Sylvine Simulation Started" << std::endl;
-    auto configPath = "";
-    auto parser = Parser();
-    auto config = parser.parseConfig(configPath); // configPath z argsów
-    auto game = Game(config);
-
+int main(int argc, char* argv[]) {
+    std::string configPath = (argc > 1) ? argv[1] : "data/config/config1.yaml";
+    std::cout << "Using config file: " << configPath << std::endl;
+    Config config(configPath);
+    Game game(config);
     game.play();
-
+    
+    return 0;
 }
-
-
-
-#include <string>
-#include <vector>
-#include <memory>
-#include "empty.hpp"
-
