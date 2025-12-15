@@ -30,20 +30,26 @@ TEST_CASE("Player initialization and basic logic", "[player]") {
     }
 
     SECTION("Strategy is used to make decisions") {
-        int decision = player.makeDecision(99);
+        int opponentId = 5;
+        auto meAgainstPlayer1 = player.getMeAgainstPlayer(opponentId);
+        REQUIRE(meAgainstPlayer1.size() == 0);
+
+        int decision = player.makeDecision(opponentId);
+        auto meAgainstPlayer2 = player.getMeAgainstPlayer(opponentId);
+        REQUIRE(meAgainstPlayer2.size() == 1);
         REQUIRE(decision == 1);
+        REQUIRE(meAgainstPlayer2[0] == 1);
     }
 
     SECTION("Memory (Game History) is updated correctly") {
         int opponentId = 5;
-
-        player.updateMemory(opponentId, 0);
-        player.updateMemory(opponentId, 1);
+        player.updateHistory(opponentId, 0);
+        player.updateHistory(opponentId, 1);
         
-        auto history = player.getMemory(opponentId);
-        REQUIRE(history.size() == 2);
-        REQUIRE(history[0] == 0);
-        REQUIRE(history[1] == 1);
+        auto playerAgainstMe = player.getPlayerAgainstMe(opponentId);
+        REQUIRE(playerAgainstMe.size() == 2);
+        REQUIRE(playerAgainstMe[0] == 0);
+        REQUIRE(playerAgainstMe[1] == 1);
     }
 }
 

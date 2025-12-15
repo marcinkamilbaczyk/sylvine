@@ -4,6 +4,14 @@
 #include <map>
 #include "strategy.hpp"
 
+class Memory {
+    private:
+        std::map<int, std::vector<int>> memory;
+    public:
+        void set(int key, int value);
+        std::vector<int> get(int key);
+};
+
 class Player {
     public:
         Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy), points(0) {}
@@ -13,16 +21,19 @@ class Player {
 
         int makeDecision(int playerAgainst);
 
-        void updateMemory(int playerAgainst, int decision);
+        void updateHistory(int playerAgainst, int decision);
 
         void updatePoints(int pointsToAdd);
 
-        std::vector<int> getMemory(int playerAgainst);
+        std::vector<int> getMeAgainstPlayer(int playerAgainst);
+
+        std::vector<int> getPlayerAgainstMe(int playerAgainst);
     
     private:
         int id;
         std::shared_ptr<Strategy> strategy;
-        std::map<int, std::vector<int>> gameHistory; // <playerAgainst, <0, 1>
+        Memory meAgainstPlayer; // <id, <0, 1>
+        Memory playerAgainstMe; // <playerAgainst, <0, 1>
         int points;
 };
 
