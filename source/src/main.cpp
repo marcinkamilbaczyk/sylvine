@@ -2,56 +2,50 @@
 #include <vector>
 #include <memory>
 #include <iostream>
-#include "../include/config.hpp"
+#include "config.hpp"
 
-class Game {
-public:
-    Game(const Config& config) {}
-    void play() {}
-};
-
-class Output {};
-
-class Strategy {
-public:
-    virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
-    virtual ~Strategy() = default;
-};
-
-class AlwaysPositives: public Strategy {
-public:
-    int makeDecision(std::vector<int> gameHistoryWithPlayer) override { return 0; }
-};
-
-class AlwaysNegatives: public Strategy {
-public:
-    int makeDecision(std::vector<int> gameHistoryWithPlayer) override { return 0; }
-};
-
-class RandomDecision: public Strategy {
-public:
-    int makeDecision(std::vector<int> gameHistoryWithPlayer) override { return 0; }
-};
-
-class PlayerFactory {};
-
-class Player {
-public:
-    Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy) {}
-    int getId() { return id; }
-private:
-    int id;
-    std::shared_ptr<Strategy> strategy;
-};
-
-class Evaluator {};
 
 int main(int argc, char* argv[]) {
     std::string configPath = (argc > 1) ? argv[1] : "data/config/config1.yaml";
-    std::cout << "Using config file: " << configPath << std::endl;
+    
+    std::cout << "Loading config from: " << configPath << std::endl;
+    std::cout << "========================================" << std::endl;
+    
     Config config(configPath);
-    Game game(config);
-    game.play();
+    
+    // Print basic parameters
+    std::cout << "Number of prisoners: " << config.getNumPrisoners() << std::endl;
+    std::cout << "Number of rounds: " << config.getNumRounds() << std::endl;
+    std::cout << std::endl;
+    
+    // Print strategies
+    std::cout << "Strategies:" << std::endl;
+    for (const auto& [name, percentage] : config.getStrategies()) {
+        int count = config.getNumPrisonersForStrategy(name);
+        std::cout << "  " << name << ": " << (percentage * 100) << "% (" 
+                  << count << " prisoners)" << std::endl;
+    }
+    std::cout << std::endl;
+    
+    // Print payoff matrix
+    const auto& payoff = config.getPayoffMatrix();
+    std::cout << "Payoff matrix [R, S, T, P]: [";
+    for (size_t i = 0; i < payoff.size(); i++) {
+        std::cout << payoff[i];
+        if (i < payoff.size() - 1) std::cout << ", ";
+    }
+    std::cout << "]" << std::endl;
+    std::cout << "  R (both cooperate): " << payoff[0] << std::endl;
+    std::cout << "  S (I cooperate, opponent defects): " << payoff[1] << std::endl;
+    std::cout << "  T (I defect, opponent cooperates): " << payoff[2] << std::endl;
+    std::cout << "  P (both defect): " << payoff[3] << std::endl;
+    std::cout << std::endl;
+    
+    std::cout << "========================================" << std::endl;
+    std::cout << "Starting game..." << std::endl;
+    
+    //Game game(config);
+    //game.play();
     
     return 0;
 }
