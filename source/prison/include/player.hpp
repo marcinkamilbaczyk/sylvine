@@ -10,9 +10,10 @@ class Player {
         void updatePoints(int pointsToAdd);
         void updateMemory(int player, int decision);
         int getId();
+        int getPoints();
 };
 
 class PlayerFactory {
     public:
-        Player makePlayer(...);
+        Player makePlayer(std::string strategyName);
 };
