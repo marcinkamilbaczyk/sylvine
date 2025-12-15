@@ -1,0 +1,71 @@
+#include <catch2/catch_test_macros.hpp>
+
+#include "player.hpp"
+#include "strategy.hpp"
+
+
+TEST_CASE("Player initialization and basic logic", "[player]") {
+    auto mockStrategy = std::make_shared<BaseStrategy>();
+    int playerId = 10;
+    Player player(playerId, mockStrategy);
+
+    SECTION("Player has correct initial ID and zero points") {
+        REQUIRE(player.getId() == 10);
+        REQUIRE(player.getPoints() == 0);
+        REQUIRE(player.getStrategy() == mockStrategy);
+    }
+
+    SECTION("Points are updated correctly") {
+        player.updatePoints(5);
+        CHECK(player.getPoints() == 5);
+
+        player.updatePoints(10);
+        REQUIRE(player.getPoints() == 15);
+        
+        player.updatePoints(-20);
+        REQUIRE(player.getPoints() == -5);
+        
+        player.updatePoints(0);
+        REQUIRE(player.getPoints() == -5);
+    }
+
+    SECTION("Strategy is used to make decisions") {
+        int decision = player.makeDecision(99);
+        REQUIRE(decision == 1);
+    }
+
+    SECTION("Memory (Game History) is updated correctly") {
+        int opponentId = 5;
+
+        player.updateMemory(opponentId, 0);
+        player.updateMemory(opponentId, 1);
+        
+        auto history = player.getMemory(opponentId);
+        REQUIRE(history.size() == 2);
+        REQUIRE(history[0] == 0);
+        REQUIRE(history[1] == 1);
+    }
+}
+
+TEST_CASE("PlayerFactory creates instances correctly", "[PlayerFactory]") {
+    auto strategy = std::make_shared<BaseStrategy>();
+    int testId = 123;
+
+    SECTION("Factory creates a player with the correct ID") {
+        Player player = PlayerFactory::makePlayer(testId, strategy);
+        REQUIRE(player.getId() == testId);
+    }
+
+    SECTION("Factory assigns the correct strategy pointer") {
+        Player player = PlayerFactory::makePlayer(testId, strategy);
+        REQUIRE(player.getStrategy() == strategy);
+        REQUIRE(player.getStrategy() != nullptr);
+    }
+
+    SECTION("Factory handles nullptr strategy correctly") {
+        Player player = PlayerFactory::makePlayer(99, nullptr);
+
+        REQUIRE(player.getId() == 99);
+        REQUIRE(player.getStrategy() == nullptr);
+    }
+}

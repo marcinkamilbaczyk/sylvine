@@ -3,8 +3,8 @@
 
 #include "empty.hpp"
 
-TEST_CASE("test 1", "[cdl]")
-{
-    CHECK(fun(1,2)==3);
-}
+// TEST_CASE("test 1", "[cdl]")
+// {
+//     CHECK(fun(1,2)==3);
+// }
 

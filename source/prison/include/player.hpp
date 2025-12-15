@@ -8,12 +8,16 @@ class Player {
     public:
         Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy), points(0) {}
         int getId();
+        int getPoints();
+        std::shared_ptr<Strategy> getStrategy();
 
         int makeDecision(int playerAgainst);
 
         void updateMemory(int playerAgainst, int decision);
 
         void updatePoints(int pointsToAdd);
+
+        std::vector<int> getMemory(int playerAgainst);
     
     private:
         int id;
@@ -24,7 +28,7 @@ class Player {
 
 class PlayerFactory {
     public:
-        Player makePlayer(int id, std::shared_ptr<Strategy> strategy);
+        static Player makePlayer(int id, std::shared_ptr<Strategy> strategy);
 };
 
 #endif // PLAYER_H   
