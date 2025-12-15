@@ -1,0 +1,21 @@
+# payoff_matrix (2×2):
+
+#
+#           B:Coop B:Betray
+# A:Coop [ R , R ] [ S , T ]
+# A:Betray [ T , S ] [ P , P ]
+
+
+num_prisoners: 100
+num_epochs: 50
+
+strategies:
+  strategy1: 0.50   # 50%
+  strategy2: 0.25   # 25%
+  strategy3: 0.25   # 25%
+
+params:
+  R: 3
+  S: 0
+  T: 5
+  P: 1
