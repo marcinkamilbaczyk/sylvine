@@ -1,15 +1,5 @@
 // main.cpp
 #include <string>
-<<<<<<< HEAD
-#include <vector>
-#include <memory>
-#include <iostream>
-#include "empty.hpp"
-#include "player.hpp"
-
-int main() {
-    std::cout << "Hello World!" << std::endl;
-=======
 #include <iostream>
 #include "config_loader.hpp"
 
@@ -110,5 +100,4 @@ int main(int argc, char* argv[]) {
     // game.play();
 
     return 0;
->>>>>>> origin/main
 }
