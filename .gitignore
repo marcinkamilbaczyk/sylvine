@@ -44,3 +44,5 @@ source/out/*
 *.dwo
 .vscode
 build
+build/
+source/build/
