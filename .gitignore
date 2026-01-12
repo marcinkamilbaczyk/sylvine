@@ -42,5 +42,6 @@ source/out/*
 
 # debug information files
 *.dwo
+build/
+source/build/
 .vscode
-build

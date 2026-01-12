@@ -2,14 +2,13 @@
 
 Wprawka projektowa dot. dylematu więźnia rozgrywanego w turach pomiędzy wieloma graczami.
 
-```bash
-cd source/build
-cmake ..
-make
+---
 
-# tests
-./prison/tests/test_prison_lib
+### how to build config
 
-# main
-./src/prog
+```
+$ mkdir -p source/build && cd source/build
+$ cmake .. && make install
+$ cd ../..
+$ ./source/build/prog
 ```

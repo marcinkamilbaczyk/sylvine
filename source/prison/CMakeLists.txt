@@ -1,10 +1,14 @@
-file(GLOB_RECURSE
-    LIB_SRC
-    src/*.cpp
+# Znajdź yaml-cpp
+find_package(yaml-cpp REQUIRED)
+
+add_library(prison_lib 
+    src/config.cpp
+    src/config_loader.cpp
+    src/empty.cpp
 )
 
-add_library(prison_lib STATIC ${LIB_SRC})
+target_include_directories(prison_lib PUBLIC include)
+target_link_libraries(prison_lib PUBLIC yaml-cpp)
 
-target_include_directories(prison_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+# Testy
 add_subdirectory(tests)
