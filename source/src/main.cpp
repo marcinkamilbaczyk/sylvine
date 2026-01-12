@@ -8,58 +8,58 @@
 // class Config {};
 
 // Output - Zajko, Dębek, Prędota
-class Game {
-    public:
-        Game(Config config);
-        Output play();
-};
+// class Game {
+//     public:
+//         Game(Config config);
+//         Output play();
+// };
 
-class Output {
+// class Output {
 
-};
+// };
 
 // Moduł strategii - Gustaw, Owczarczuk, Mastej
-class Strategy {
-    public:
-        virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
-};
+// class Strategy {
+//     public:
+//         virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
+// };
 
-class AlwaysPositives: public Strategy {
+// class AlwaysPositives: public Strategy {
     
-};
+// };
 
-class AlwaysNegatives: public Strategy {
+// class AlwaysNegatives: public Strategy {
 
-};
+// };
 
-class RandomDecision: public Strategy {
+// class RandomDecision: public Strategy {
 
-};
+// };
 
 // Moduł gracza - Sitek, Wasmocki
-class PlayerFactory {
-    Player makePlayer(...) { // TODO: do definiowania jakie parametry
+// class PlayerFactory {
+//     Player makePlayer(...) { // TODO: do definiowania jakie parametry
 
-    }
-};
+//     }
+// };
 
-class Player {
-    public:
-        Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy) {}
-        int getId() { return id; }
+// class Player {
+//     public:
+//         Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy) {}
+//         int getId() { return id; }
     
-    private:
-        int id;
-        std::shared_ptr<Strategy> strategy;
-};
+//     private:
+//         int id;
+//         std::shared_ptr<Strategy> strategy;
+// };
 
 
 // Ewaluator - Macek, Fidura, Kiciński, 
-class Evaluator {
-    std::vector<int> evaluateScoring(std::vector<std::vector<int>> allPlayersDecisions) {
+// class Evaluator {
+//     std::vector<int> evaluateScoring(std::vector<std::vector<int>> allPlayersDecisions) {
 
-    }
-};
+//     }
+// };
 
 // ------------------------------------------------------------------------//
 
