@@ -1,18 +1,17 @@
+#ifndef STRATEGY_H
+#define STRATEGY_H
 #include <vector>
 
 class Strategy {
     public:
-        virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
+        virtual int makeDecision(std::vector<int> firstPlayerHistory, std::vector<int> secondPlayerHistory) = 0;
 };
 
-class AlwaysPositives: public Strategy {
-    
+class BaseStrategy: public Strategy {
+    public:
+        int makeDecision(std::vector<int> firstPlayerHistory, std::vector<int> secondPlayerHistory) override {
+            return 1;
+        }
 };
 
-class AlwaysNegatives: public Strategy {
-
-};
-
-class RandomDecision: public Strategy {
-
-};
+#endif // STRATEGY_H   
