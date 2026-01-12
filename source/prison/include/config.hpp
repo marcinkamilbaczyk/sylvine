@@ -1,12 +1,29 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
+#include <map>
 #include <string>
+#include <vector>
+#include <stdexcept>
 
-class Config {};
-class Parser {
-    public:
-        Config parseConfig(std::string configPath);
+class Config {
+private:
+    int num_prisoners{};
+    int num_rounds{};
+    std::map<std::string, double> strategies;   // strategy name -> percentage (0.0-1.0)
+    std::vector<int> payoff_matrix;             // [R, S, T, P]
+
+public:
+    // Constructor - loads from INI file
+    explicit Config(const std::string& config_path);
+
+    // Getters
+    int getNumPrisoners() const;
+    int getNumRounds() const;
+    const std::map<std::string, double>& getStrategies() const;
+    const std::vector<int>& getPayoffMatrix() const;
+
+    int getNumPrisonersForStrategy(const std::string& strategy) const;
 };
 
-#endif
+#endif // CONFIG_HPP
