@@ -5,6 +5,7 @@ add_library(prison_lib
     src/config.cpp
     src/config_loader.cpp
     src/empty.cpp
+    src/player.cpp
 )
 
 target_include_directories(prison_lib PUBLIC include)
