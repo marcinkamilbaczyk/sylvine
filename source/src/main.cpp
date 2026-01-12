@@ -1,60 +1,103 @@
+// main.cpp
 #include <string>
-#include <vector>
-#include <memory>
 #include <iostream>
-#include <exception>
-#include "config.hpp"
+#include "config_loader.hpp"
+
+// ------------------------------------------------------------------------//
+// Moduł config - Ogonowski, Obara
+// class Config {};
+
+// Output - Zajko, Dębek, Prędota
+class Game {
+    public:
+        Game(Config config);
+        Output play();
+};
+
+class Output {
+
+};
+
+// Moduł strategii - Gustaw, Owczarczuk, Mastej
+class Strategy {
+    public:
+        virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
+};
+
+class AlwaysPositives: public Strategy {
+    
+};
+
+class AlwaysNegatives: public Strategy {
+
+};
+
+class RandomDecision: public Strategy {
+
+};
+
+// Moduł gracza - Sitek, Wasmocki
+class PlayerFactory {
+    Player makePlayer(...) { // TODO: do definiowania jakie parametry
+
+    }
+};
+
+class Player {
+    public:
+        Player(int id, std::shared_ptr<Strategy> strategy): id(id), strategy(strategy) {}
+        int getId() { return id; }
+    
+    private:
+        int id;
+        std::shared_ptr<Strategy> strategy;
+};
+
+
+// Ewaluator - Macek, Fidura, Kiciński, 
+class Evaluator {
+    std::vector<int> evaluateScoring(std::vector<std::vector<int>> allPlayersDecisions) {
+
+    }
+};
+
+// ------------------------------------------------------------------------//
+
 
 int main(int argc, char* argv[]) {
-    std::string configPath = (argc > 1)
-        ? argv[1]
-        : "data/config/config1.ini";
-
-    std::cout << "Loading config from: " << configPath << std::endl;
-    std::cout << "========================================" << std::endl;
-
-    try {
-        Config config(configPath);
-
-        // Print basic parameters
-        std::cout << "Number of prisoners: " << config.getNumPrisoners() << std::endl;
-        std::cout << "Number of rounds: " << config.getNumRounds() << std::endl;
-        std::cout << std::endl;
-
-        // Print strategies
-        std::cout << "Strategies:" << std::endl;
-        for (const auto& [name, percentage] : config.getStrategies()) {
-            int count = config.getNumPrisonersForStrategy(name);
-            std::cout << "  " << name << ": " << (percentage * 100) << "% ("
-                      << count << " prisoners)" << std::endl;
-        }
-        std::cout << std::endl;
-
-        // Print payoff matrix
-        const auto& payoff = config.getPayoffMatrix();
-        std::cout << "Payoff matrix [R, S, T, P]: [";
-        for (size_t i = 0; i < payoff.size(); i++) {
-            std::cout << payoff[i];
-            if (i < payoff.size() - 1) std::cout << ", ";
-        }
-        std::cout << "]" << std::endl;
-        std::cout << "  R (both cooperate): " << payoff[0] << std::endl;
-        std::cout << "  S (I cooperate, opponent defects): " << payoff[1] << std::endl;
-        std::cout << "  T (I defect, opponent cooperates): " << payoff[2] << std::endl;
-        std::cout << "  P (both defect): " << payoff[3] << std::endl;
-        std::cout << std::endl;
-
-        std::cout << "========================================" << std::endl;
-        std::cout << "Starting game..." << std::endl;
-
-        // Game game(config);
-        // game.play();
-
-    } catch (const std::exception& e) {
-        std::cerr << "Config error: " << e.what() << std::endl;
-        std::cerr << "Program terminated." << std::endl;
-        return 1;
+    std::string configPath = "data/config/config1.ini";
+    if (argc > 1) {
+        configPath = argv[1];
     }
+
+    ConfigLoader loader(configPath, true);
+    auto config = loader.load();
+    
+    if (!config) return 1;
+
+
+    // ------------------------------------------------------------------------//
+    // DOSTEP DO DANYCH Z CONFIG PRZYKLAD: 
+    // ------------------------------------------------------------------------//
+    
+    // std::cout << "Config values:" << std::endl;
+    // std::cout << "Prisoners: " << config->getNumPrisoners() << std::endl;
+    // std::cout << "Rounds: " << config->getNumRounds() << std::endl;
+    
+    // std::cout << "Strategies: ";
+    // for (const auto& [name, percentage] : config->getStrategies()) {
+    //     std::cout << name << "=" << percentage << " ";
+    // }
+    // std::cout << std::endl;
+    
+    // const auto& payoff = config->getPayoffMatrix();
+    // std::cout << "Payoff [R,S,T,P]: [" << payoff[0] << "," << payoff[1] 
+    //           << "," << payoff[2] << "," << payoff[3] << "]" << std::endl;
+    
+    // ------------------------------------------------------------------------//
+    
+    // Game game(*config);
+    // game.play();
 
     return 0;
 }

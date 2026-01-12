@@ -3,6 +3,7 @@ find_package(yaml-cpp REQUIRED)
 
 add_library(prison_lib 
     src/config.cpp
+    src/config_loader.cpp
     src/empty.cpp
 )
 
