@@ -42,25 +42,27 @@ std::vector<int> RulesMatrix::getResults(int d1, int d2)
     {
         std::vector<int> out(2); // TODO do sprawdzenia xd
 
+        //payoff_matrix zawiera dane liczbowe do wypelnienia instrukcji (config_module.cpp)
+
         if(d1 == COOPERATE && d2 == COOPERATE)
         {
-            out[0] = 3;
-            out[1] = 3;
+            out[0] = R;
+            out[1] = R;
         }
         else if(d1 == COOPERATE && d2 == DEFECT)
         {
-            out[0] = 0;
-            out[1] = 10;
+            out[0] = S;
+            out[1] = T;
         }
         else if(d1 == DEFECT && d2 == COOPERATE)
         {
-            out[0] = 10;
-            out[1] = 0;
+            out[0] = T;
+            out[1] = S;
         }
         else if(d1 == DEFECT && d2 == DEFECT)
         {
-            out[0] = 2;
-            out[1] = 2;
+            out[0] = P;
+            out[1] = P;
         }
 
     return out;
@@ -69,9 +71,9 @@ std::vector<int> RulesMatrix::getResults(int d1, int d2)
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-Evaluator::Evaluator( std::shared_ptr<RulesMatrix> _rulesMatrix) 
+Evaluator::Evaluator( std::vector<int> payoff_matrix) 
     {
-        rulesMatrix = _rulesMatrix;
+        rulesMatrix = std::make_shared<RulesMatrix>(payoff_matrix);
     }
 
 

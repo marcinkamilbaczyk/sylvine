@@ -40,13 +40,22 @@ class ResultsMatrix {
 class RulesMatrix 
 {
     public:
+        RulesMatrix(std::vector<int> payoff_matrix)
+        {
+            R = payoff_matrix[0];
+            S = payoff_matrix[1];
+            T = payoff_matrix[2];
+            P = payoff_matrix[3];
+        };
+
         std::vector<int> getResults(int d1, int d2);
+        int R, S, T, P;
 };
 
 class Evaluator 
 {
     public:
-       Evaluator( std::shared_ptr<RulesMatrix> _rulesMatrix);
+       Evaluator( std::vector<int> payoff_matrix);
        ResultsMatrix evaluateScoring(RoundDecisionMatrix _decisionMatrix, int N);
 
     private:
