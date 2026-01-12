@@ -29,13 +29,13 @@ class Output {
 class Strategy {
 public:
   Strategy(){}
-  virtual int makeDecision(std::vector<int> gameHistoryWithPlayer) = 0;
+  virtual int makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer) = 0;
   virtual ~Strategy() = default;
 };
 
 class AlwaysPositives: public Strategy {
 public:
-  int makeDecision(std::vector<int> gameHistoryWithPlayer){
+  int makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer){
     return 1;
   }
     
@@ -43,7 +43,7 @@ public:
 
 class AlwaysNegatives: public Strategy {
 public:
-  int makeDecision(std::vector<int> gameHistoryWithPlayer){
+  int makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer){
     return 0;
   }
 };
@@ -53,10 +53,29 @@ public:
   RandomDecision(){
     std::srand(std::time(0));
   }
-  int makeDecision(std::vector<int> gameHistoryWithPlayer){
+  int makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer){
     return std::rand()%2;
   }  
   
+};
+
+class TitForTat: public Strategy {
+public:
+  int makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer){
+    if (playerHistory.empty()){
+	return 1;
+      }
+    else{
+      return gameHistoryWithPlayer.back();
+    }
+  }
+};
+
+class NewStrategy: public Strategy {
+public:
+  int makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer){
+    return -1;
+  }
 };
 
 class StrategyManager {
@@ -65,10 +84,12 @@ public:
     look_up_strategy["AlwaysPositives"] = std::make_unique<AlwaysPositives>();
     look_up_strategy["AlwaysNegatives"] = std::make_unique<AlwaysNegatives>();
     look_up_strategy["RandomDecision"] = std::make_unique<RandomDecision>();
+    look_up_strategy["TitForTat"] = std::make_unique<TitForTat>();
   }
 
   int Execute(std::string strategy_name, std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer)
   {
+    look_up_strategy[strategy_name]->makeDecision(playerHistory, gameHistoryWithPlayer);
     return -1;
   }
 private:

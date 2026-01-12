@@ -1,6 +1,9 @@
 source/.vs/*
 source/out/*
 
+#emacs files
+*~ 
+
 # Prerequisites
 *.d
 
