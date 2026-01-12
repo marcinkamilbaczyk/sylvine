@@ -3,6 +3,7 @@
 
 src/CMakeFiles/prog.dir/main.cpp.o: src/main.cpp \
   prison/include/empty.hpp \
+  prison/include/strategy.hpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -610,10 +611,6 @@ prison/libprison_lib.a:
 
 /usr/include/c++/15/stop_token:
 
-/usr/include/c++/15/x86_64-redhat-linux/bits/c++allocator.h:
-
-/usr/include/c++/15/source_location:
-
 /usr/include/c++/15/semaphore:
 
 /usr/include/c++/15/regex:
@@ -767,6 +764,10 @@ prison/libprison_lib.a:
 /usr/include/c++/15/atomic:
 
 /usr/include/c++/15/array:
+
+/usr/include/c++/15/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/15/bits/ranges_util.h:
 
 /usr/include/c++/15/any:
 
@@ -924,6 +925,14 @@ src/CMakeFiles/prog.dir/main.cpp.o:
 
 /usr/include/bits/types/clockid_t.h:
 
+/usr/include/c++/15/x86_64-redhat-linux/bits/time_members.h:
+
+/usr/include/c++/15/tr1/riemann_zeta.tcc:
+
+/usr/include/bits/siginfo-consts-arch.h:
+
+/usr/include/bits/sigstack.h:
+
 /usr/include/bits/syscall.h:
 
 /usr/include/c++/15/codecvt:
@@ -957,10 +966,6 @@ src/CMakeFiles/prog.dir/main.cpp.o:
 /usr/include/c++/15/fstream:
 
 /usr/include/assert.h:
-
-/usr/include/c++/15/bits/ranges_util.h:
-
-/usr/include/c++/15/bits/stl_raw_storage_iter.h:
 
 /usr/include/bits/types/sig_atomic_t.h:
 
@@ -1048,14 +1053,6 @@ prison/include/empty.hpp:
 
 /usr/include/c++/15/bits/erase_if.h:
 
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/c++/15/bits/regex.h:
-
-/usr/include/asm-generic/types.h:
-
 /usr/include/asm-generic/errno.h:
 
 /usr/include/c++/15/pstl/glue_numeric_defs.h:
@@ -1066,19 +1063,19 @@ prison/include/empty.hpp:
 
 /usr/include/c++/15/bits/regex_automaton.h:
 
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/c++/15/bits/regex.h:
+
+/usr/include/asm-generic/types.h:
+
 /usr/include/bits/types/__sigset_t.h:
 
 /usr/include/c++/15/bits/stl_queue.h:
 
 /usr/include/bits/types.h:
-
-/usr/include/bits/sigstack.h:
-
-/usr/include/c++/15/x86_64-redhat-linux/bits/time_members.h:
-
-/usr/include/c++/15/tr1/riemann_zeta.tcc:
-
-/usr/include/bits/siginfo-consts-arch.h:
 
 /usr/include/c++/15/cstdio:
 
@@ -1105,6 +1102,16 @@ prison/include/empty.hpp:
 /usr/include/bits/uio_lim.h:
 
 /usr/include/c++/15/bits/concept_check.h:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/c++allocator.h:
+
+/usr/include/c++/15/source_location:
+
+prison/include/strategy.hpp:
+
+/usr/include/c++/15/bits/allocated_ptr.h:
+
+/usr/include/c++/15/bits/istream.tcc:
 
 /usr/include/bits/mathcalls-narrow.h:
 
@@ -1240,11 +1247,11 @@ prison/include/empty.hpp:
 
 /usr/include/c++/15/bits/regex.tcc:
 
-/usr/include/c++/15/backward/auto_ptr.h:
-
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/c++/15/bits/stl_heap.h:
+
+/usr/include/c++/15/backward/auto_ptr.h:
 
 /usr/include/c++/15/bits/exception_defines.h:
 
@@ -1321,10 +1328,6 @@ prison/include/empty.hpp:
 /usr/lib64/crtn.o:
 
 /usr/include/c++/15/bits/ios_base.h:
-
-/usr/include/c++/15/bits/allocated_ptr.h:
-
-/usr/include/c++/15/bits/istream.tcc:
 
 /usr/include/c++/15/debug/debug.h:
 

@@ -175,29 +175,29 @@ prison_lib/fast:
 	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/build
 .PHONY : prison_lib/fast
 
-src/empty.o: src/empty.cpp.o
-.PHONY : src/empty.o
+src/strategy.o: src/strategy.cpp.o
+.PHONY : src/strategy.o
 
 # target to build an object file
-src/empty.cpp.o:
-	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o
-.PHONY : src/empty.cpp.o
+src/strategy.cpp.o:
+	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o
+.PHONY : src/strategy.cpp.o
 
-src/empty.i: src/empty.cpp.i
-.PHONY : src/empty.i
+src/strategy.i: src/strategy.cpp.i
+.PHONY : src/strategy.i
 
 # target to preprocess a source file
-src/empty.cpp.i:
-	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/src/empty.cpp.i
-.PHONY : src/empty.cpp.i
+src/strategy.cpp.i:
+	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.i
+.PHONY : src/strategy.cpp.i
 
-src/empty.s: src/empty.cpp.s
-.PHONY : src/empty.s
+src/strategy.s: src/strategy.cpp.s
+.PHONY : src/strategy.s
 
 # target to generate assembly for a file
-src/empty.cpp.s:
-	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/src/empty.cpp.s
-.PHONY : src/empty.cpp.s
+src/strategy.cpp.s:
+	cd /home/aaron/Studies/zpc/sylvine/source && $(MAKE) $(MAKESILENT) -f prison/CMakeFiles/prison_lib.dir/build.make prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.s
+.PHONY : src/strategy.cpp.s
 
 # Help Target
 help:
@@ -212,9 +212,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... prison_lib"
-	@echo "... src/empty.o"
-	@echo "... src/empty.i"
-	@echo "... src/empty.s"
+	@echo "... src/strategy.o"
+	@echo "... src/strategy.i"
+	@echo "... src/strategy.s"
 .PHONY : help
 
 

@@ -1,2 +1,2 @@
-/usr/bin/ar qc libprison_lib.a CMakeFiles/prison_lib.dir/src/empty.cpp.o
+/usr/bin/ar qc libprison_lib.a CMakeFiles/prison_lib.dir/src/strategy.cpp.o
 /usr/bin/ranlib libprison_lib.a

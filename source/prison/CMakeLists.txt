@@ -3,7 +3,9 @@ file(GLOB_RECURSE
     src/*.cpp
 )
 
-add_library(prison_lib STATIC ${LIB_SRC})
+add_library(prison_lib
+  src/strategy.cpp
+)
 
 target_include_directories(prison_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

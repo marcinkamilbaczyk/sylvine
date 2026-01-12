@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/prison_lib.dir/src/empty.cpp.o"
-  "CMakeFiles/prison_lib.dir/src/empty.cpp.o.d"
+  "CMakeFiles/prison_lib.dir/src/strategy.cpp.o"
+  "CMakeFiles/prison_lib.dir/src/strategy.cpp.o.d"
   "libprison_lib.a"
   "libprison_lib.pdb"
 )

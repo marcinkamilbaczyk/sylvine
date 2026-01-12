@@ -72,28 +72,28 @@ include prison/CMakeFiles/prison_lib.dir/flags.make
 prison/CMakeFiles/prison_lib.dir/codegen:
 .PHONY : prison/CMakeFiles/prison_lib.dir/codegen
 
-prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o: prison/CMakeFiles/prison_lib.dir/flags.make
-prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o: prison/src/empty.cpp
-prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o: prison/CMakeFiles/prison_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aaron/Studies/zpc/sylvine/source/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o"
-	cd /home/aaron/Studies/zpc/sylvine/source/prison && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o -MF CMakeFiles/prison_lib.dir/src/empty.cpp.o.d -o CMakeFiles/prison_lib.dir/src/empty.cpp.o -c /home/aaron/Studies/zpc/sylvine/source/prison/src/empty.cpp
+prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o: prison/CMakeFiles/prison_lib.dir/flags.make
+prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o: prison/src/strategy.cpp
+prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o: prison/CMakeFiles/prison_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aaron/Studies/zpc/sylvine/source/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o"
+	cd /home/aaron/Studies/zpc/sylvine/source/prison && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o -MF CMakeFiles/prison_lib.dir/src/strategy.cpp.o.d -o CMakeFiles/prison_lib.dir/src/strategy.cpp.o -c /home/aaron/Studies/zpc/sylvine/source/prison/src/strategy.cpp
 
-prison/CMakeFiles/prison_lib.dir/src/empty.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/prison_lib.dir/src/empty.cpp.i"
-	cd /home/aaron/Studies/zpc/sylvine/source/prison && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaron/Studies/zpc/sylvine/source/prison/src/empty.cpp > CMakeFiles/prison_lib.dir/src/empty.cpp.i
+prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/prison_lib.dir/src/strategy.cpp.i"
+	cd /home/aaron/Studies/zpc/sylvine/source/prison && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaron/Studies/zpc/sylvine/source/prison/src/strategy.cpp > CMakeFiles/prison_lib.dir/src/strategy.cpp.i
 
-prison/CMakeFiles/prison_lib.dir/src/empty.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/prison_lib.dir/src/empty.cpp.s"
-	cd /home/aaron/Studies/zpc/sylvine/source/prison && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaron/Studies/zpc/sylvine/source/prison/src/empty.cpp -o CMakeFiles/prison_lib.dir/src/empty.cpp.s
+prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/prison_lib.dir/src/strategy.cpp.s"
+	cd /home/aaron/Studies/zpc/sylvine/source/prison && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaron/Studies/zpc/sylvine/source/prison/src/strategy.cpp -o CMakeFiles/prison_lib.dir/src/strategy.cpp.s
 
 # Object files for target prison_lib
 prison_lib_OBJECTS = \
-"CMakeFiles/prison_lib.dir/src/empty.cpp.o"
+"CMakeFiles/prison_lib.dir/src/strategy.cpp.o"
 
 # External object files for target prison_lib
 prison_lib_EXTERNAL_OBJECTS =
 
-prison/libprison_lib.a: prison/CMakeFiles/prison_lib.dir/src/empty.cpp.o
+prison/libprison_lib.a: prison/CMakeFiles/prison_lib.dir/src/strategy.cpp.o
 prison/libprison_lib.a: prison/CMakeFiles/prison_lib.dir/build.make
 prison/libprison_lib.a: prison/CMakeFiles/prison_lib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/aaron/Studies/zpc/sylvine/source/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libprison_lib.a"

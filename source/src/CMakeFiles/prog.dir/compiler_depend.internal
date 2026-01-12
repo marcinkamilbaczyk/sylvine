@@ -4,6 +4,7 @@
 src/CMakeFiles/prog.dir/main.cpp.o
  /home/aaron/Studies/zpc/sylvine/source/src/main.cpp
  /home/aaron/Studies/zpc/sylvine/source/prison/include/empty.hpp
+ /home/aaron/Studies/zpc/sylvine/source/prison/include/strategy.hpp
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
