@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include "empty.hpp"
 #include "strategy.hpp"
 

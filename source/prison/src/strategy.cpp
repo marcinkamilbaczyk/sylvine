@@ -43,6 +43,5 @@ StrategyManager::StrategyManager(){
 
 int StrategyManager::Execute(std::string strategy_name, std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer)
 {
-  look_up_strategy[strategy_name]->makeDecision(playerHistory, gameHistoryWithPlayer);
-  return -1;
+    return look_up_strategy[strategy_name]->makeDecision(playerHistory, gameHistoryWithPlayer);
 }

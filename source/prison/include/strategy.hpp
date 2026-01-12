@@ -4,8 +4,8 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <bits/stdc++.h>
-
+//#include <bits/stdc++.h>
+#include <random>
 class Strategy {
 public:
   Strategy(){}
