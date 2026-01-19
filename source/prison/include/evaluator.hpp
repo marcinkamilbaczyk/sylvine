@@ -17,7 +17,7 @@ class RoundDecisionMatrix
 {
 public:
     RoundDecisionMatrix(int numPlayers);
-
+    int getNumCols();
     void updateDecision(int i, int j, int decision);
     int getDecision(int i, int j);
 
@@ -42,7 +42,7 @@ private:
 class RulesMatrix
 {
 public:
-    RulesMatrix(std::vector<int> payoff_matrix)
+    RulesMatrix(int payoff_matrix[4])
     {
         R = payoff_matrix[0];
         S = payoff_matrix[1];

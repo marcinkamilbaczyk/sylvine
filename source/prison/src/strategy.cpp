@@ -1,6 +1,8 @@
+#include <memory>
+#include <ctime>
 #include "strategy.hpp"
 
-
+  
 
 //Positive strategy
 int AlwaysPositives::makeDecision(std::vector<int> playerHistory, std::vector<int> gameHistoryWithPlayer){

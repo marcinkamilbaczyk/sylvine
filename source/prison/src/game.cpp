@@ -26,6 +26,30 @@ Game::Game(Config config)
     scoringMatrix[3] = payoff[3]; // P
 }
 
+std::unique_ptr<Strategy> makeStrategyByName(const std::string &strategyName)
+{
+    if (strategyName == "AlwaysPositives")
+    {
+        return std::make_unique<AlwaysPositives>();
+    }
+    else if (strategyName == "AlwaysNegatives")
+    {
+        return std::make_unique<AlwaysNegatives>();
+    }
+    else if (strategyName == "RandomDecision")
+    {
+        return std::make_unique<RandomDecision>();
+    }
+    else if (strategyName == "TitForTat")
+    {
+        return std::make_unique<TitForTat>();
+    }
+    else
+    {
+        throw std::invalid_argument("Unknown strategy name: " + strategyName);
+    }
+}
+
 std::vector<Player> Game::createPlayers()
 {
     auto players = std::vector<Player>();
@@ -38,11 +62,6 @@ std::vector<Player> Game::createPlayers()
         }
     }
     return players;
-}
-
-Strategy makeStrategyByName(const std::string &strategyName)
-{
-    return nullptr; // TODO: implementacja tworzenia strategii na podstawie nazwy
 }
 
 RoundDecisionMatrix Game::playRound(std::vector<Player> &players)
@@ -86,7 +105,7 @@ void Game::updatePlayersMemory(std::vector<Player> &players, RoundDecisionMatrix
         {
             if (i == j)
                 continue;
-            players.at(i).updateMemory(j, roundDecisionMatrix.getDecision(j, i));
+            players.at(i).updateHistory(j, roundDecisionMatrix.getDecision(j, i));
         }
     }
 }

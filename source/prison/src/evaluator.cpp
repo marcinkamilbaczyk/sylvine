@@ -23,6 +23,9 @@ int RoundDecisionMatrix::getDecision(int i, int j)
     return decisionFlattenedArray.at(numCols * i + j);
 }
 
+int RoundDecisionMatrix::getNumCols() {
+    return numCols;
+}
 //////////////////////////////////////////////////////////////////////////////////////
 
 ResultsMatrix::ResultsMatrix(int numPlayers)
