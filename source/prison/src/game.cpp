@@ -1,18 +1,29 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <iostream>
 #include "config.hpp"
 #include "evaluator.hpp"
 #include "player.hpp"
 #include "output.hpp"
+#include "game.hpp"
 
 // Game - Zajko, Dębek, Prędota
-class Game {
-    private:
-        Game(Config config) {
-            // TODO: kiedyś powstanie
+
+Game::Game(Config config) {
+            numRounds = config.getNumRounds();
+            std::cout<<"Number of rounds: " << numRounds << std::endl;
+            for (const auto& [strategyName, percentage] : config.getStrategies()) {
+                int count = config.getNumPrisonersForStrategy(strategyName);
+                playersStrategyMap[strategyName] = count;
+            }
+            auto payoff = config.getPayoffMatrix();
+            scoringMatrix[0][0] = payoff[0]; // R
+            scoringMatrix[0][1] = payoff[1]; // S
+            scoringMatrix[1][0] = payoff[2]; // T
+            scoringMatrix[1][1] = payoff[3]; // P
         }
-        std::vector<Player> createPlayers() {
+        std::vector<Player> Game::createPlayers() {
             auto players = std::vector<Player>();
             auto playerFactory = PlayerFactory();
             for (auto pair: playersStrategyMap) {
@@ -22,7 +33,7 @@ class Game {
             }
             return players;
         }
-        RoundDecisionMatrix playRound(std::vector<Player>& players) {
+        RoundDecisionMatrix Game::playRound(std::vector<Player>& players) {
             auto roundDecisionMatrix = RoundDecisionMatrix(players.size());
             for (size_t i = 0; i < players.size(); i++) {
                 for (size_t j = 0; j < players.size(); j++) {
@@ -32,7 +43,7 @@ class Game {
             }
             return roundDecisionMatrix;
         }
-        void updatePointsAndScoreBoard(std::vector<Player>& players, RoundDecisionMatrix& roundDecisionMatrix, Output& output, Evaluator& evaluator) {
+        void Game::updatePointsAndScoreBoard(std::vector<Player>& players, RoundDecisionMatrix& roundDecisionMatrix, Output& output, Evaluator& evaluator) {
             auto pointsIncrements = evaluator.evaluateScoring(roundDecisionMatrix);
             auto scoreBoard = std::vector<int>();
             for (size_t i = 0; i < players.size(); i++) {
@@ -42,7 +53,7 @@ class Game {
             output.addToScoreHistory(scoreBoard);
             output.addToDecisionsHistory(roundDecisionMatrix);
         }
-        void updatePlayersMemory(std::vector<Player>& players, RoundDecisionMatrix& roundDecisionMatrix) {
+        void Game::updatePlayersMemory(std::vector<Player>& players, RoundDecisionMatrix& roundDecisionMatrix) {
             for (size_t i = 0; i < players.size(); i++) {
                 for (size_t j = 0; j < players.size(); j++) {
                     if (i == j) continue;
@@ -50,13 +61,12 @@ class Game {
                 }
             }
         }
-    public:
-        Output play() {
+        Output Game::play() {
             // Utwórz graczy
             auto players = createPlayers();
             // Zagraj gre
             auto output = Output();
-            auto evaluator = Evaluator();
+            auto evaluator = Evaluator(scoringMatrix);
             for (size_t i = 0; i < numRounds; i++) {
                 auto roundDecisionMatrix = playRound(players);
                 // Policz punkty dla każdego gracza
@@ -67,9 +77,3 @@ class Game {
             }
             return output;
         }
-    
-    private:
-        size_t numRounds;
-        std::map<std::string, int> playersStrategyMap;
-        int scoringMatrix[2][2];
-};
