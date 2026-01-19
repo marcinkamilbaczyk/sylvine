@@ -72,7 +72,7 @@ std::vector<int> RulesMatrix::getResults(int d1, int d2)
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-Evaluator::Evaluator(int payoff_matrix[2][2])
+Evaluator::Evaluator(int payoff_matrix[4])
 {
     rulesMatrix = std::make_shared<RulesMatrix>(payoff_matrix);
 }

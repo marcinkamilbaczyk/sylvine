@@ -57,7 +57,7 @@ public:
 class Evaluator
 {
 public:
-    Evaluator(int payoff_matrix[2][2]);
+    Evaluator(int payoff_matrix[4]);
     ResultsMatrix evaluateScoring(RoundDecisionMatrix _decisionMatrix, int N);
 
 private:

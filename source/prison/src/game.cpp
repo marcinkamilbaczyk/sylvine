@@ -20,10 +20,10 @@ Game::Game(Config config)
         playersStrategyMap[strategyName] = count;
     }
     auto payoff = config.getPayoffMatrix();
-    scoringMatrix[0][0] = payoff[0]; // R
-    scoringMatrix[0][1] = payoff[1]; // S
-    scoringMatrix[1][0] = payoff[2]; // T
-    scoringMatrix[1][1] = payoff[3]; // P
+    scoringMatrix[0] = payoff[0]; // R
+    scoringMatrix[1] = payoff[1]; // S
+    scoringMatrix[2] = payoff[2]; // T
+    scoringMatrix[3] = payoff[3]; // P
 }
 
 std::vector<Player> Game::createPlayers()
@@ -34,10 +34,15 @@ std::vector<Player> Game::createPlayers()
     {
         for (int i = 0; i < pair.second; i++)
         {
-            players.push_back(playerFactory.makePlayer(pair.second, pair.first)); // TODO: jak będą strategie
+            players.push_back(playerFactory.makePlayer(pair.second, makeStrategyByName(pair.first))); // TODO: jak będą strategie
         }
     }
     return players;
+}
+
+Strategy makeStrategyByName(const std::string &strategyName)
+{
+    return nullptr; // TODO: implementacja tworzenia strategii na podstawie nazwy
 }
 
 RoundDecisionMatrix Game::playRound(std::vector<Player> &players)
