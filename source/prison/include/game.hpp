@@ -19,5 +19,5 @@ class Game {
     private:
         size_t numRounds;
         std::map<std::string, int> playersStrategyMap;
-        int scoringMatrix[2][2];
+        int scoringMatrix[4];
 };

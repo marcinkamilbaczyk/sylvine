@@ -7,15 +7,17 @@
 #include <memory>
 #include "evaluator.hpp"
 
-enum DECISION {
+enum DECISION
+{
     COOPERATE = 0,
     DEFECT,
 };
 
-class RoundDecisionMatrix {
+class RoundDecisionMatrix
+{
 public:
     RoundDecisionMatrix(int numPlayers);
-
+    int getNumCols();
     void updateDecision(int i, int j, int decision);
     int getDecision(int i, int j);
 
@@ -24,8 +26,8 @@ private:
     std::vector<int> decisionFlattenedArray;
 };
 
-
-class ResultsMatrix {
+class ResultsMatrix
+{
 public:
     ResultsMatrix(int numPlayers);
     void updateResults(int i, int j, int result);
@@ -40,7 +42,7 @@ private:
 class RulesMatrix
 {
 public:
-    RulesMatrix(std::vector<int> payoff_matrix)
+    RulesMatrix(int payoff_matrix[4])
     {
         R = payoff_matrix[0];
         S = payoff_matrix[1];
@@ -55,13 +57,11 @@ public:
 class Evaluator
 {
 public:
-    Evaluator(std::vector<int> payoff_matrix);
+    Evaluator(int payoff_matrix[4]);
     ResultsMatrix evaluateScoring(RoundDecisionMatrix _decisionMatrix, int N);
 
 private:
     std::shared_ptr<RulesMatrix> rulesMatrix;
 };
-
-
 
 #endif // EVALUATOR_HPP
