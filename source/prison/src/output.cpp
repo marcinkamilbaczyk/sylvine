@@ -2,18 +2,17 @@
 #include <string>
 #include <fstream>
 #include "evaluator.hpp"
+#include "output.hpp"
 
-class Output {
-    public:
-        void addToDecisionsHistory(RoundDecisionMatrix roundDecisionMatrix) {
+        void Output::addToDecisionsHistory(RoundDecisionMatrix roundDecisionMatrix) {
             decisionsHistory.push_back(roundDecisionMatrix);
         }
 
-        void addToScoreHistory(std::vector<int> scores) {
+        void Output::addToScoreHistory(std::vector<int> scores) {
             scoreHistory.push_back(scores);
         }
 
-        void saveToFile(std::string scoreHistoryFile, std::string decisionsHistoryFile) {
+        void Output::saveToFile(std::string scoreHistoryFile, std::string decisionsHistoryFile) {
             std::ofstream scoreFile(scoreHistoryFile);
             for (auto scores : scoreHistory) {
                 for (auto score : scores) {
@@ -35,8 +34,3 @@ class Output {
             }
             decisionsFile.close();
         }
-
-    private:
-        std::vector<RoundDecisionMatrix> decisionsHistory;
-        std::vector<std::vector<int>> scoreHistory;
-};

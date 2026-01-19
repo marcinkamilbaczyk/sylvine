@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include "config_loader.hpp"
+#include "config.hpp"
+#include "game.hpp" 
 
 // ------------------------------------------------------------------------//
 // Moduł config - Ogonowski, Obara
@@ -75,7 +77,9 @@ int main(int argc, char* argv[]) {
     
     if (!config) return 1;
 
-
+    auto game = Game(*config);
+    auto output = game.play();
+    output.saveToFile("scoreHistory.txt", "decisionsHistory.txt");
     // ------------------------------------------------------------------------//
     // DOSTEP DO DANYCH Z CONFIG PRZYKLAD: 
     // ------------------------------------------------------------------------//
