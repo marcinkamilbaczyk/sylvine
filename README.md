@@ -12,3 +12,8 @@ $ cmake .. && make install
 $ cd ../..
 $ ./source/build/prog
 ```
+### wyniki
+
+przebiegi wyników dla 3ech różnych stategii
+
+![opis obrazka](data/docs/startegies_image.png)
